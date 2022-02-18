@@ -1,4 +1,4 @@
-$FileName = "D:\PowerShell\ZeroFileSize.txt"
+$FileName = "\root\esxireport"
 if (Test-Path $FileName) {
   Remove-Item $FileName
 }
@@ -32,8 +32,8 @@ $Output = foreach ($Cluster in $Clusterlist)
             FreeCPUCore = $FreeCpuCore
             FreeMemoryGB = $FreeMemoryGB
             FreeSpaceGB = [math]::Round($FreeDisk.FreeSpaceGB,0)
-        }
+        } |
         Select-Object ClusterName, HostName, FreeCPUCore, FreeMemoryGB, FreeSpaceGB
     }
 }
-$Output | Export-Csv C:\GPoutput.csv -Append -NoTypeInformation -UseCulture
+$Output | Export-Csv $FileName -Append -NoTypeInformation -UseCulture
