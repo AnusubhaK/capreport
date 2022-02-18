@@ -31,7 +31,7 @@ $Output = foreach ($Cluster in $Clusterlist)
             HostName = $hostobj.Name
             FreeCPUCore = $FreeCpuCore
             FreeMemoryGB = $FreeMemoryGB
-            FreeSpaceGB = $FreeDisk.FreeSpaceGB
+            FreeSpaceGB = [math]::Round($FreeDisk.FreeSpaceGB,0)
         }
         Select-Object ClusterName, HostName, FreeCPUCore, FreeMemoryGB, FreeSpaceGB
     }
