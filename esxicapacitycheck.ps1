@@ -1,3 +1,7 @@
+$FileName = "D:\PowerShell\ZeroFileSize.txt"
+if (Test-Path $FileName) {
+  Remove-Item $FileName
+}
 
 #Get list of all clusters
 $Clusterlist = Get-Cluster
