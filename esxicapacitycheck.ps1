@@ -32,4 +32,4 @@ $Output = foreach ($Cluster in $Clusterlist)
         Select-Object ClusterName, HostName, FreeCPUCore, FreeMemoryGB, FreeSpaceGB
     }
 }
-$Output | Export-Csv C:\GPoutput.csv -Append
+$Output | Export-Csv C:\GPoutput.csv -Append -NoTypeInformation -UseCulture
