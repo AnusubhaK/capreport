@@ -1,4 +1,4 @@
-$FileName = "\root\esxireport"
+$FileName = "\root\esxireport.csv"
 if (Test-Path $FileName) {
   Remove-Item $FileName
 }
@@ -17,6 +17,7 @@ $Output = foreach ($Cluster in $Clusterlist)
     foreach ($hostobj in $hostlist)
     {
         $FreeDisk = (Get-Datastore -VMHost $hostobj | Where-Object {$_.Extensiondata.Summary.MultipleHostAccess -eq $True} | Select FreeSpaceGB) 
+        #$FreeDisk = (Get-Datastore -VMHost $hostobj | Where-Object {$_.Extensiondata.Summary.MultipleHostAccess -eq $False} | Select FreeSpaceGB)
         $TotalCPUMhz = Get-VMHost $hostobj | Select CpuTotalMhz 
         $UsedCPUMhz = Get-VMHost $hostobj | Select CpuUsageMhz 
         $NumCPU = Get-VMHost $hostobj | Select NumCpu
